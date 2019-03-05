@@ -52,3 +52,19 @@ function digPow(n, p) {
 console.log(digPow(89, 1));
 console.log(digPow(92, 1));
 console.log(digPow(46288, 3));
+
+function XO(str) {
+  var x = 0,
+    o = 0,
+    array = str.toLowerCase().split("");
+array.forEach(letter => {
+  letter === 'x' ? x++ : letter === 'o' ? o++ : true;
+});
+  return x === o;
+}
+
+console.log(XO("xo"));
+console.log(XO("xxOo"));
+console.log(XO("xxxm"));
+console.log(XO("Oo"));
+console.log(XO("ooom"));
