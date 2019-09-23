@@ -57,9 +57,9 @@ function XO(str) {
   var x = 0,
     o = 0,
     array = str.toLowerCase().split("");
-array.forEach(letter => {
-  letter === 'x' ? x++ : letter === 'o' ? o++ : true;
-});
+  array.forEach(letter => {
+    letter === 'x' ? x++ : letter === 'o' ? o++ : true;
+  });
   return x === o;
 }
 
@@ -68,3 +68,53 @@ console.log(XO("xxOo"));
 console.log(XO("xxxm"));
 console.log(XO("Oo"));
 console.log(XO("ooom"));
+
+console.log('September 2019: ');
+
+console.log('Maximum subarray sum - start');
+
+var maxSequence = function (arr) {
+  var thisMax = 0, theMax = 0;
+
+  for (var i = 0; i < arr.length; i++) {
+    thisMax = Math.max(0, thisMax + arr[i]);
+    theMax = Math.max(thisMax, theMax);
+  }
+  return theMax <= 0 ? 0 : theMax;
+}
+
+console.log(maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
+console.log(maxSequence([-1, -2, -3, -4, -5, -6, -7]));
+console.log(maxSequence([]));
+console.log(maxSequence([2, 1, 3, 4, 1, 2, 1, 5, 4]));
+
+console.log('Maximum subarray sum - end');
+
+console.log('Sum of Pairs - start');
+
+var sum_pairs = function(ints, s) {
+  var map = {},
+      answer, answerMaxIndex = ints.length - 1;
+
+  for (var i = 0; i <= answerMaxIndex; i++) {
+      var first = ints[i];
+      var second = s - first;
+      var j = map[second];
+      if (j !== undefined && i <= answerMaxIndex && j <= answerMaxIndex) {
+          answerMaxIndex = i > j ? i : j;
+          answer = i < j ? [first, second] : [second, first];
+      }
+      var tmp = map[first];
+      if (tmp === undefined || i < tmp) {
+          map[first] = i;
+      }
+  }
+  return answer;
+};
+
+console.log(sum_pairs([1, 4, 8, 7, 3, 15], 8));
+console.log(sum_pairs([1, -2, 3, 0, -6, 1], -6));
+console.log(sum_pairs([20, -13, 40], -7));
+console.log(sum_pairs([1, 2, 3, 4, 1, 0], -2));
+
+console.log('Sum of Pairs - end');
