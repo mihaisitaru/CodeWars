@@ -69,7 +69,7 @@ console.log(XO("xxxm"));
 console.log(XO("Oo"));
 console.log(XO("ooom"));
 
-console.log('September 2019: ');
+console.log('From September 2019: ');
 
 console.log('Maximum subarray sum - start');
 
@@ -118,3 +118,40 @@ console.log(sum_pairs([20, -13, 40], -7));
 console.log(sum_pairs([1, 2, 3, 4, 1, 0], -2));
 
 console.log('Sum of Pairs - end');
+
+console.log('Does my number look big in this? - start');
+
+function narcissistic(value) {
+  let i = 0, j = 0,
+    numbersArr = [],
+    val = value.toString(),
+    valLen = val.length;
+
+  for (; i < valLen; i++) {
+    numbersArr.push(val.slice(i, i + 1));
+  }
+
+  for (; j < valLen; j++) {
+    numbersArr[j] = Math.pow(Math.floor(numbersArr[j]), numbersArr.length);
+  }
+  
+  return value === numbersArr.reduce((a, b) => a + b, 0);
+}
+
+console.log('Does my number look big in this? - end');
+
+console.log('Find The Parity Outlier - start');
+
+function findOutlier(integers) {
+  let even = integers.filter(int => int % 2 == 0),
+      odd = integers.filter(int => Math.abs(int % 2) == 1);
+
+  if (even.length === 1) {
+    return even[0];
+  } else {
+    return odd[0];
+  }
+}
+
+console.log('Find The Parity Outlier - end');
+
