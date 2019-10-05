@@ -138,7 +138,7 @@ function narcissistic(value) {
   return value === numbersArr.reduce((a, b) => a + b, 0);
 }
 
-narcissistic(153);
+console.log(narcissistic(153));
 
 console.log('Does my number look big in this? - end');
 
@@ -155,8 +155,8 @@ function findOutlier(integers) {
   }
 }
 
-findOutlier([0,0,0,3,0,0]);
-findOutlier([1,4,7,9,15]);
+console.log(findOutlier([0,0,0,3,0,0]));
+console.log(findOutlier([1,4,7,9,15]));
 
 console.log('Find The Parity Outlier - end');
 
