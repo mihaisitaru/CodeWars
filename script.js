@@ -92,22 +92,22 @@ console.log('Maximum subarray sum - end');
 
 console.log('Sum of Pairs - start');
 
-var sum_pairs = function(ints, s) {
+var sum_pairs = function (ints, s) {
   var map = {},
-      answer, answerMaxIndex = ints.length - 1;
+    answer, answerMaxIndex = ints.length - 1;
 
   for (var i = 0; i <= answerMaxIndex; i++) {
-      var first = ints[i];
-      var second = s - first;
-      var j = map[second];
-      if (j !== undefined && i <= answerMaxIndex && j <= answerMaxIndex) {
-          answerMaxIndex = i > j ? i : j;
-          answer = i < j ? [first, second] : [second, first];
-      }
-      var tmp = map[first];
-      if (tmp === undefined || i < tmp) {
-          map[first] = i;
-      }
+    var first = ints[i];
+    var second = s - first;
+    var j = map[second];
+    if (j !== undefined && i <= answerMaxIndex && j <= answerMaxIndex) {
+      answerMaxIndex = i > j ? i : j;
+      answer = i < j ? [first, second] : [second, first];
+    }
+    var tmp = map[first];
+    if (tmp === undefined || i < tmp) {
+      map[first] = i;
+    }
   }
   return answer;
 };
@@ -134,7 +134,7 @@ function narcissistic(value) {
   for (; j < valLen; j++) {
     numbersArr[j] = Math.pow(Math.floor(numbersArr[j]), numbersArr.length);
   }
-  
+
   return value === numbersArr.reduce((a, b) => a + b, 0);
 }
 
@@ -146,7 +146,7 @@ console.log('Find The Parity Outlier - start');
 
 function findOutlier(integers) {
   let even = integers.filter(int => int % 2 == 0),
-      odd = integers.filter(int => Math.abs(int % 2) == 1);
+    odd = integers.filter(int => Math.abs(int % 2) == 1);
 
   if (even.length === 1) {
     return even[0];
@@ -155,8 +155,28 @@ function findOutlier(integers) {
   }
 }
 
-console.log(findOutlier([0,0,0,3,0,0]));
-console.log(findOutlier([1,4,7,9,15]));
+console.log(findOutlier([0, 0, 0, 3, 0, 0]));
+console.log(findOutlier([1, 4, 7, 9, 15]));
 
 console.log('Find The Parity Outlier - end');
 
+console.log('Number of trailing zeros of N! - start');
+
+function zeros(n) {
+  var count = 0, beginAt = 5;
+  for (var i = beginAt; i <= n; i++) {
+    var num = i;
+    while (num % beginAt === 0) {
+      num /= beginAt;
+      count++;
+    }
+  }
+  return count;
+} 
+
+console.log(zeros(0));
+console.log(zeros(5));
+console.log(zeros(6));
+console.log(zeros(30));
+
+console.log('Number of trailing zeros of N! - end');
